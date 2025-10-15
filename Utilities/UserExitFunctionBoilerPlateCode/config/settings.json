@@ -1,0 +1,9 @@
+{
+    "namespace": "<Service Bus Namespace>",
+    "sourceQueue": "<Input Queue>",
+    "destinationQueue": "<Output Queue>",
+    "keyName": "<Key Name>",
+    "key": "<Primary Key>",
+    "initialDelayInMs":1000,
+    "maxRetryCount":3   
+}
