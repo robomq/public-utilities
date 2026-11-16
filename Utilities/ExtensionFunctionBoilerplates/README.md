@@ -10,6 +10,7 @@ These templates handle the queues and the reply. You only write your business lo
 | --- | --- | --- |
 | Java 17 | [AzureFunction/java](AzureFunction/java) | [Server/java](Server/java) |
 | Node.js 20 | [AzureFunction/node](AzureFunction/node) | [Server/node](Server/node) |
+| C# / .NET 10 | [AzureFunction/dotnet](AzureFunction/dotnet) | [Server/dotnet](Server/dotnet) |
 | PowerShell 7 | – | [../UserExitFunctionBoilerPlateCode](../UserExitFunctionBoilerPlateCode) |
 
 **Which one should I use?**
@@ -39,9 +40,9 @@ These templates handle the queues and the reply. You only write your business lo
 | Your function... | Reply |
 | --- | --- |
 | returns null | `success` |
-| returns an object (Java: `JSONObject`) | `success` with it in `data` |
+| returns an object (Java: `JSONObject`, C#: `JsonObject`) | `success` with it in `data` |
 | throws any other error | `failure`, `error_code` `"500"`, `error_description` = error message |
-| throws `BusinessLogicException("msg", "404")` (Java) or `businessLogicError("msg", "404")` (Node) | `failure` with `error_code` `"404"` |
+| throws `BusinessLogicException("msg", "404")` (Java, C#) or `businessLogicError("msg", "404")` (Node) | `failure` with `error_code` `"404"` |
 | request body is not valid JSON | `failure`, `error_code` `"500"` |
 
 A business-logic failure still produces a reply: H2R gets `failure`, and the request is completed.
@@ -56,8 +57,8 @@ A namespace-level policy with Listen + Send is the simplest.
 ## Running the templates
 
 - [SERVICE_BUS_SETUP.md](SERVICE_BUS_SETUP.md): create the namespace, queues and access policy for testing
-- Azure Function (VS Code): [Java](AzureFunction/java/RUN_GUIDE.md), [Node.js](AzureFunction/node/RUN_GUIDE.md): where to write your code, test, run locally, deploy
-- Standalone server: [Java](Server/java/RUN_GUIDE.md), [Node.js](Server/node/RUN_GUIDE.md): build, run, test and deploy
+- Azure Function (VS Code): [Java](AzureFunction/java/RUN_GUIDE.md), [Node.js](AzureFunction/node/RUN_GUIDE.md), [C#](AzureFunction/dotnet/RUN_GUIDE.md): where to write your code, test, run locally, deploy
+- Standalone server: [Java](Server/java/RUN_GUIDE.md), [Node.js](Server/node/RUN_GUIDE.md), [C#](Server/dotnet/RUN_GUIDE.md): build, run, test and deploy
 
 ## End-to-end test
 
