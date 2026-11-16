@@ -3,3 +3,5 @@ target/
 .azurite/
 *.log
 node_modules/
+bin/
+obj/
