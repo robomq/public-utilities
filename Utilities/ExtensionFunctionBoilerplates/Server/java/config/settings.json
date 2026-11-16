@@ -1,0 +1,7 @@
+{
+  "namespace": "<Service Bus Namespace>",
+  "keyName": "<Shared Access Policy name>",
+  "key": "<Shared Access Policy primary key>",
+  "sourceQueue": "<Queue H2R sends requests to>",
+  "destinationQueue": "<Queue H2R reads replies from>"
+}
