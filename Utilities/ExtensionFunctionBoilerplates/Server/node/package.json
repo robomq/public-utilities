@@ -1,0 +1,17 @@
+{
+  "name": "extension-function-worker",
+  "version": "1.0.0",
+  "description": "H2R extension function: standalone Service Bus worker",
+  "private": true,
+  "main": "src/worker.js",
+  "scripts": {
+    "start": "node src/worker.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@azure/service-bus": "7.10.0"
+  }
+}
