@@ -2,3 +2,4 @@ local.settings.json
 target/
 .azurite/
 *.log
+node_modules/

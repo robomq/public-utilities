@@ -9,6 +9,7 @@ These templates handle the queues and the reply. You only write your business lo
 | Language | Azure Function | Standalone server (VM, on-prem, container) |
 | --- | --- | --- |
 | Java 17 | [AzureFunction/java](AzureFunction/java) | [Server/java](Server/java) |
+| Node.js 20 | [AzureFunction/node](AzureFunction/node) | [Server/node](Server/node) |
 | PowerShell 7 | – | [../UserExitFunctionBoilerPlateCode](../UserExitFunctionBoilerPlateCode) |
 
 **Which one should I use?**
@@ -38,9 +39,9 @@ These templates handle the queues and the reply. You only write your business lo
 | Your function... | Reply |
 | --- | --- |
 | returns null | `success` |
-| returns a JSONObject | `success` with it in `data` |
-| throws any exception | `failure`, `error_code` `"500"`, `error_description` = exception message |
-| throws `BusinessLogicException("msg", "404")` | `failure` with `error_code` `"404"` |
+| returns an object (Java: `JSONObject`) | `success` with it in `data` |
+| throws any other error | `failure`, `error_code` `"500"`, `error_description` = error message |
+| throws `BusinessLogicException("msg", "404")` (Java) or `businessLogicError("msg", "404")` (Node) | `failure` with `error_code` `"404"` |
 | request body is not valid JSON | `failure`, `error_code` `"500"` |
 
 A business-logic failure still produces a reply: H2R gets `failure`, and the request is completed.
@@ -55,8 +56,8 @@ A namespace-level policy with Listen + Send is the simplest.
 ## Running the templates
 
 - [SERVICE_BUS_SETUP.md](SERVICE_BUS_SETUP.md): create the namespace, queues and access policy for testing
-- [Server/java/RUN_GUIDE.md](Server/java/RUN_GUIDE.md): build, run, test and deploy the standalone worker
-- [AzureFunction/java/RUN_GUIDE.md](AzureFunction/java/RUN_GUIDE.md): build, run locally, test and deploy the Azure Function
+- Azure Function (VS Code): [Java](AzureFunction/java/RUN_GUIDE.md), [Node.js](AzureFunction/node/RUN_GUIDE.md): where to write your code, test, run locally, deploy
+- Standalone server: [Java](Server/java/RUN_GUIDE.md), [Node.js](Server/node/RUN_GUIDE.md): build, run, test and deploy
 
 ## End-to-end test
 
